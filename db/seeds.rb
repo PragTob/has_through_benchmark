@@ -7,14 +7,17 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 ActiveRecord::Base.transaction do
-  100_000.times do
+  10_000.times do
     source         = Source.create!
     source_id      = source.id
-    intermediary   = Intermediary.create! source_id: source_id
-    intermediar_id = intermediary.id
-    3.times do
-      DirectlyAttached.create! source_id: source_id
-      Attached.create! intermediary_id: intermediar_id
+
+    10.times do
+      intermediary   = Intermediary.create! source_id: source_id
+      intermediar_id = intermediary.id
+      3.times do
+        DirectlyAttached.create! source_id: source_id
+        Attached.create! intermediary_id: intermediar_id
+      end
     end
   end
 end

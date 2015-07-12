@@ -1,6 +1,6 @@
 Benchmark.ips do |benchmark|
 
-  RANGE = (0...100_000)
+  RANGE = (0...10_000)
   benchmark.report "direct access from a random source" do
     Source.find(rand(RANGE)).directly_attacheds.to_a
   end
